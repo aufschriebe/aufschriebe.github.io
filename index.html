@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #finder-container {
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .finder-section {
+            display: none;
+        }
+
+        .finder-section.active {
+            display: block;
+        }
+
+        .back-btn {
+            display: block;
+            margin-bottom: 20px;
+            background-color: #ccc;
+            padding: 10px;
+            text-align: center;
+            width: 100px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .option {
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background-color: #f9f9f9;
+        }
+
+        .download-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .download-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="finder-container">
+        <!-- School Selection -->
+        <div id="school" class="finder-section active">
+            <div class="option" onclick="nextSection('class')">Kepi</div>
+        </div>
+
+        <!-- Class Selection -->
+        <div id="class" class="finder-section">
+            <div class="back-btn" onclick="prevSection('school')">Back</div>
+            <div class="option" onclick="nextSection('subject')">J1</div>
+        </div>
+
+        <!-- Subject Selection -->
+        <div id="subject" class="finder-section">
+            <div class="back-btn" onclick="prevSection('class')">Back</div>
+            <div class="option" onclick="nextSection('download')">Geschichte KB</div>
+            <div class="option" onclick="nextSection('download')">Deutsch KB</div>
+            <div class="option" onclick="nextSection('download')">Englisch PF</div>
+        </div>
+
+        <!-- Download Section -->
+        <div id="download" class="finder-section">
+            <div class="back-btn" onclick="prevSection('subject')">Back</div>
+            <div class="download-section">
+                <p>Download the corresponding PDF:</p>
+                <a href="path/to/yourfile.pdf" class="download-btn" download>Download PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function nextSection(next) {
+            document.querySelector('.finder-section.active').classList.remove('active');
+            document.getElementById(next).classList.add('active');
+        }
+
+        function prevSection(prev) {
+            document.querySelector('.finder-section.active').classList.remove('active');
+            document.getElementById(prev).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
