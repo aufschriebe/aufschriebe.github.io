@@ -1,65 +1,157 @@
+/* Body Styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    color: #333;
+    overflow: hidden;
 }
 
+/* Container Styling */
 #finder-container {
-    width: 80%;
+    width: 90%;
     max-width: 600px;
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     padding: 20px;
+    overflow: hidden;
+
+    transition: transform 0.3s ease;
 }
 
+/* Finder Sections */
 .finder-section {
     display: none;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .finder-section.active {
     display: block;
+    opacity: 1;
+    transform: translateX(0);
 }
 
+/* Back Button Styling */
 .back-btn {
     display: block;
     margin-bottom: 20px;
     background-color: #ccc;
     padding: 10px;
     text-align: center;
-    width: 100px;
+    width: 120px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 50px;
+    color: #333;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+.back-btn:hover {
+    background-color: #bbb;
+    transform: scale(1.05);
+}
+
+/* Option Styling */
 .option {
-    padding: 10px;
-    border-bottom: 1px solid #e0e0e0;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border: 2px solid transparent;
+    background-color: #f8f8f8;
+    border-radius: 8px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.option::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(17, 116, 214, 0.3), rgba(142, 182, 210, 0.3)); /* Blue gradient */
+    transition: transform 0.4s ease;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+.option:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 .option:hover {
-    background-color: #f9f9f9;
+    color: white;
+    border-color: #0080ff; /* Blue border color */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
+.option:hover .arrow {
+    transform: translateX(6px);
+}
+
+/* Arrow Animation on Hover */
+.arrow {
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Download Section Styling */
 .download-section {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
 }
 
+.download-section p {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #0066cc; /* Blue color */
+}
+
+/* Download Button Styling */
 .download-btn {
     background-color: #4CAF50;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 30px;
     border: none;
-    border-radius: 4px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
     text-decoration: none;
-    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.download-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

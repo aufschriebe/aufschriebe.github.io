@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category Finder</title>
+    <title>Aufschriebe</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <!-- Google tag (gtag.js) -->
@@ -26,23 +26,30 @@
         <!-- Class Selection -->
         <div id="class" class="finder-section">
             <div class="back-btn" onclick="prevSection('school')">Back</div>
-            <div class="option" onclick="nextSection('subject')">J1</div>
+            <div class="option" onclick="nextSection('J1')">J1</div>
         </div>
 
         <!-- Subject Selection -->
-        <div id="subject" class="finder-section">
+        <div id="J1" class="finder-section">
             <div class="back-btn" onclick="prevSection('class')">Back</div>
-            <div class="option" onclick="nextSection('download')">Geschichte KB</div>
-            <div class="option" onclick="nextSection('download')">Deutsch KB</div>
-            <div class="option" onclick="nextSection('download')">Englisch PF</div>
+            <div class="option" onclick="nextSectionDownload('next/path1')">Ethik SI</div>
+            <div class="option" onclick="nextSectionDownload('next/path1')">Mathe KA</div>
+            <div class="option" onclick="nextSectionDownload('download')">Geschichte KB</div>
+            <div class="option" onclick="nextSectionDownload('download')">Physik GR</div>
+            <div class="option" onclick="nextSectionDownload('download')">Deutsch KB</div>
+            <div class="option" onclick="nextSectionDownload('download')">Informatik WG</div>
+            <div class="option" onclick="nextSectionDownload('download')">Psychologie ST</div>
+            <div class="option" onclick="nextSectionDownload('download')">Englisch PR</div>
+            <div class="option" onclick="nextSectionDownload('download')">Erdkunde KV</div>
         </div>
+   
 
         <!-- Download Section -->
         <div id="download" class="finder-section">
-            <div class="back-btn" onclick="prevSection('subject')">Back</div>
+            <div class="back-btn" onclick="prevSection('J1')">Back</div>
             <div class="download-section">
                 <p>Download the corresponding PDF:</p>
-                <a href="path/to/yourfile.pdf" class="download-btn" download>Download PDF</a>
+                <a href="path/to/yourfile.pdf" class="download-btn" download id="downloadbutton">Download PDF</a>
             </div>
         </div>
     </div>
@@ -51,6 +58,14 @@
         function nextSection(next) {
             document.querySelector('.finder-section.active').classList.remove('active');
             document.getElementById(next).classList.add('active');
+        }
+        function nextSectionDownload(downloadlink) {
+            var next = 'download';
+            document.querySelector('.finder-section.active').classList.remove('active');
+            document.getElementById(next).classList.add('active');
+            console.log("The download link is: " + downloadlink);
+            document.getElementById('downloadbutton').href = downloadlink;
+
         }
 
         function prevSection(prev) {
